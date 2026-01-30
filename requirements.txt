@@ -1,0 +1,24 @@
+# =============================
+# Core Django
+# =============================
+Django==6.0
+
+# =============================
+# Django REST Framework
+# =============================
+djangorestframework==3.16.1
+
+# =============================
+# JWT authentication
+# =============================
+djangorestframework-simplejwt==5.5.1
+
+# =============================
+# Optional: For filtering/search in DRF
+# =============================
+django-filter==25.2
+
+# =============================
+# Optional: For CORS headers if frontend separated
+# =============================
+django-cors-headers==4.9.0
