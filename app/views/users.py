@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from ..models import User
 from ..serializers import *
 from ..permissions import RoleRequired
-from ..validators import UserValidator
+from ..services.users import UserService
 
 
 USER_SERIALIZERS = {
@@ -26,7 +26,4 @@ class UserViewSet(viewsets.ModelViewSet):
         return [IsAuthenticated(), RoleRequired("admin")]
 
     def perform_create(self, serializer):
-        UserValidator.validate_role_assignment(
-            serializer.validated_data.get("role")
-        )
-        serializer.save()
+        UserService.create_user(serializer)
