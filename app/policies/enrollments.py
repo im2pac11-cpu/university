@@ -1,9 +1,9 @@
+from .base_policies import BasePolicy
 from ..models import Enrollment
 
 
-class BaseEnrollmentPolicy:
-    def get_queryset(self, user):
-        return Enrollment.objects.none()
+class BaseEnrollmentPolicy(BasePolicy):
+    model = Enrollment
 
 
 class AdminEnrollmentPolicy(BaseEnrollmentPolicy):
@@ -31,7 +31,7 @@ class StudentEnrollmentPolicy(BaseEnrollmentPolicy):
 
 
 ENROLLMENT_POLICIES = {
-    "admin": AdminEnrollmentPolicy(),
-    "professor": ProfessorEnrollmentPolicy(),
-    "student": StudentEnrollmentPolicy(),
+    "admin": AdminEnrollmentPolicy,
+    "professor": ProfessorEnrollmentPolicy,
+    "student": StudentEnrollmentPolicy,
 }
